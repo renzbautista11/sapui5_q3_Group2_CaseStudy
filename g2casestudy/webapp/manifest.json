@@ -95,12 +95,23 @@
           "target": [
             "TargetMainView"
           ]
+        },
+        {
+          "name": "RouteCreateView",
+          "pattern": "create",
+          "target": [
+            "TargetCreateView"
+          ]
         }
       ],
       "targets": {
         "TargetMainView": {
           "id": "MainView",
           "name": "MainView"
+        },
+        "TargetCreateView": {
+          "id": "CreateView",
+          "name": "CreateView"
         }
       }
     },

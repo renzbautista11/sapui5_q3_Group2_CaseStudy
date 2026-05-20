@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="com.training.g2casestudy.controller.CreateView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="idPageCreateOrder"
+        title="{i18n>createOrderTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <Text
+                id="idTextCreatePagePlaceholder"
+                text="{i18n>createOrderTitle}" />
+
+        </content>
+
+    </Page>
+
+</mvc:View>
