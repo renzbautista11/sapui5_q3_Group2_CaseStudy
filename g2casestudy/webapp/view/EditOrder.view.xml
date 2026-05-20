@@ -1,0 +1,6 @@
+<mvc:View controllerName="com.training.g2casestudy.controller.EditOrder"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="pageEditOrder" title="{i18n>title}">
+    </Page>
+</mvc:View>
