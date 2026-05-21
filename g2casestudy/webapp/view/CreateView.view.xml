@@ -1,22 +1,134 @@
 <mvc:View
-    controllerName="com.training.g2casestudy.controller.CreateView"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+  controllerName="com.training.g2casestudy.controller.CreateView"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
 
-    <Page
-        id="idPageCreateOrder"
-        title="{i18n>createOrderTitle}"
-        showNavButton="true"
-        navButtonPress=".onNavBack">
+  <Page
+    id="idPageCreate"
+    title="{i18n>createOrderTitle}"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
 
-        <content>
+    <content>
+      <VBox id="idVbxCreateRoot" width="100%" renderType="Bare">
+        <!-- Order Detail Panel -->
+        <Panel
+          id="idPnlOrderDetail"
+          headerText="{i18n>orderDetailTitle}"
+          expandable="false"
+          class="sapUiSmallMarginBottom sapUiSmallMarginTop">
 
-            <Text
-                id="idTextCreatePagePlaceholder"
-                text="{i18n>createOrderTitle}" />
+          <content>
+            <VBox id="idVbxOrderDetail" class="sapUiSmallMargin">
+              <HBox id="idHbxReceivingPlant" alignItems="Center" justifyContent="Center">
+                <Label
+                  id="idLblReceivingPlant"
+                  text="{i18n>receivingPlantLabel}"
+                  required="true"
+                  width="10rem"
+                  labelFor="idInpReceivingPlant" />
+                <Input
+                  id="idInpReceivingPlant"
+                  width="20rem"
+                  value="{vm>/receivingPlant}"
+                  showValueHelp="true"
+                  valueHelpRequest=".onValueHelpReceivingPlant"
+                  placeholder="{i18n>receivingPlantPlaceholder}" />
+              </HBox>
 
-        </content>
+              <HBox id="idHbxDeliveringPlant" alignItems="Center" justifyContent="Center">
+                <Label
+                  id="idLblDeliveringPlant"
+                  text="{i18n>deliveringPlantLabel}"
+                  required="true"
+                  width="10rem"
+                  labelFor="idInpDeliveringPlant" />
+                <Input
+                  id="idInpDeliveringPlant"
+                  width="20rem"
+                  value="{vm>/deliveringPlant}"
+                  showValueHelp="true"
+                  valueHelpRequest=".onValueHelpDeliveringPlant"
+                  placeholder="{i18n>deliveringPlantPlaceholder}" />
+              </HBox>
+            </VBox>
+          </content>
+        </Panel>
 
-    </Page>
+        <!-- Products Panel -->
+        <Panel
+          id="idPnlProducts"
+          headerText="{= ${i18n>productSectionTitle} + ' (' + ${vm>/products}.length + ')' }"
+          expandable="false">
 
+          <content>
+            <Toolbar id="idTbrProducts" class="sapUiTinyMarginBottom">
+              <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+              <Button
+                id="idBtnAddProduct"
+                icon="sap-icon://add"
+                type="Transparent"
+                tooltip="{i18n>addProductTooltip}"
+                press=".onAddProduct" />
+              <Button
+                id="idBtnDeleteProduct"
+                icon="sap-icon://delete"
+                type="Transparent"
+                tooltip="{i18n>deleteProductTooltip}"
+                press=".onDeleteProduct" />
+            </Toolbar>
+
+            <Table
+              id="idTblProducts"
+              inset="false"
+              items="{vm>/products}">
+              <columns>
+                <Column id="idColProductName">
+                  <Text id="idTxtColProductName" text="{i18n>colProductName}" />
+                </Column>
+                <Column id="idColQuantity" hAlign="End">
+                  <Text id="idTxtColQuantity" text="{i18n>colQuantity}" />
+                </Column>
+                <Column id="idColPricePerQty" hAlign="End">
+                  <Text id="idTxtColPricePerQty" text="{i18n>colPricePerQty}" />
+                </Column>
+                <Column id="idColTotalPrice" hAlign="End">
+                  <Text id="idTxtColTotalPrice" text="{i18n>colTotalPrice}" />
+                </Column>
+              </columns>
+
+              <items>
+                <ColumnListItem id="idCliProduct" vAlign="Middle" type="Inactive">
+                  <cells>
+                    <Text id="idTxtProductName" text="{vm>name}" />
+                    <Text id="idTxtQuantity" text="{vm>quantity}" />
+                    <Text id="idTxtPricePerQty" text="{vm>price}" />
+                    <Text id="idTxtTotalPrice" text="{vm>total}" />
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </content>
+        </Panel>
+      </VBox>
+    </content>
+
+    <footer>
+      <OverflowToolbar id="idFtrCreate">
+        <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+        <Button
+          id="idBtnSave"
+          text="{i18n>btnSave}"
+          type="Emphasized"
+          press=".onSave" />
+        <Button
+          id="idBtnCancel"
+          text="{i18n>btnCancel}"
+          type="Transparent"
+          press=".onCancel" />
+      </OverflowToolbar>
+    </footer>
+
+  </Page>
 </mvc:View>
